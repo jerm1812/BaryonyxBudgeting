@@ -1,0 +1,172 @@
+﻿/* Global */
+main {
+  /*background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+  padding-bottom: 1rem;*/
+}
+
+.page {
+  background-color: #EEF5F9
+}
+
+.btn-primary {
+  background-color: #796AEE;
+  border-color: #796AEE;
+}
+
+.bg-grey {
+  background-color: #EEF5F9
+}
+
+.item {
+  background-color: #fff;
+  border: 0 solid #eee;
+  border-radius: 0;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), -1px 0 2px rgba(0, 0, 0, 0.05)
+}
+
+/* Navbar */
+.navbar-holder {
+  justify-content: space-between;
+  width: 100%;
+}
+
+#nav-links > li > a {
+  color: #343a40;
+  font-weight: bold;
+}
+
+/* Home Page */
+
+/* Main home items */
+.home-image {
+  max-width: 600px !important;
+}
+
+.home-image img {
+  width: 100%;
+}
+
+
+/* Intro Section*/
+#intro {
+  background-image: url("../Images/person-using-tablet-computer-with-keyboard-3815584.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 35em;
+}
+
+#introContent {
+  background: rgba(52, 58, 64,0.6);
+  border-radius: 15px;
+}
+
+#introContent h1 {
+  opacity: 1;
+}
+
+#loginContainer {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Personalization Section */
+/*#personalization img {
+    width: 100%;
+}*/
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.pricing .card {
+  border: none;
+  border-radius: 0;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing hr {
+  margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+}
+
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+  opacity: 0.7;
+}
+
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+/* Hover Effects on Card */
+
+@media (min-width: 992px) {
+  .pricing .card:hover {
+    margin-top: -.25rem;
+    margin-bottom: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .pricing .card:hover .btn {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 575px) {
+  /* Global */
+
+  .item p {
+    font-size: 14px;
+  }
+
+  .item h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Navbar */
+  nav.navbar .nav-item > a {
+    font-size: 10px;
+    padding: .3rem .5rem;
+  }
+
+  /* Home Page */
+
+  #introContent {
+    font-size: 13px;
+  }
+}
+
+/* Profile Page */
+
+/* Budget Section */

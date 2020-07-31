@@ -1,0 +1,61 @@
+﻿@model BaryonyxBudgeting.Models.ViewModels.RegisterViewModel
+
+@{
+    Layout = "_LoginLayout";
+    ViewBag.Title = "Register";
+}
+
+<h1 class="text-dark text-center">User Registration</h1>
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="row py-sm-2">
+        <div class="col-sm-7 align-self-end">
+            <div class="form-group">
+                <div><span asp-validation-for="Email" class="text-danger"></span></div>
+                <div class="input-group">
+                    <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-inbox"></i></div></div>
+                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 align-self-end">
+            <div class="form-group">
+                <div><span asp-validation-for="UserName" class="text-danger"></span></div>
+                <div class="input-group">
+                    <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-user"></i></div></div>
+                    <input asp-for="UserName" class="form-control" placeholder="Username" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-sm-2">
+        <div class="col-sm-6 align-self-end">
+            <div class="form-group">
+                <div><span asp-validation-for="Password" class="text-danger"></span></div>
+                <div class="input-group">
+                    <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock"></i></div></div>
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 align-self-end">
+            <div class="form-group">
+                <div><span asp-validation-for="ConfirmPassword" class="text-danger"></span></div>
+                <div class="input-group">
+                    <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock"></i></div></div>
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-6 text-right">
+            <button type="button" class="btn btn-sm btn-danger">Reset</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-sm btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+

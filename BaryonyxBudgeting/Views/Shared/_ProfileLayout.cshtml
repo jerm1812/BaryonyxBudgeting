@@ -1,0 +1,87 @@
+﻿<html lang="en">
+<head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="~/css/fontastic.css">
+    <link rel="stylesheet" href="~/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+<header class="header">
+    <nav class="navbar bg-white text-dark">
+        <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+                <div class="navbar-header">
+                    <a id="toggle-btn" href="#" class="active">
+                        <i class="material-icons">list</i>
+                    </a>
+                    <a asp-action="Index" asp-controller="Home" class="navbar-brand d-none d-sm-inline-block">
+                        <div class="brand-text d-none d-lg-inline-block">
+                            <span>Budget </span><strong>Safe</strong>
+                        </div>
+                        <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                            <strong>BD</strong>
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        @* <a asp-controller="About" asp-action="Index" class="nav-link">About</a> *@
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Account" asp-action="Logout" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="page">
+    <div class="page-content d-flex align-items-stretch">
+        <nav class="side-navbar">
+            <div class="sidebar-header d-flex align-items-center">
+                <div class="avatar">
+                    <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle d-none">
+                </div>
+                <div class="title">
+                    <h1 class="h4">@ViewBag.userName</h1>
+                    <p class="d-none">Web Designer</p>
+                </div>
+            </div>
+            <span class="heading">Main</span>
+            <ul class="list-unstyled">
+                <li class="active">
+                    <a asp-action="Index" asp-controller="Budget"> <i class="icon-grid"></i>Budgets </a>
+                </li>
+                <li>
+                    @* <a asp-action="Index" asp-controller="Profile"> <i class="icon-user"></i>Profile </a> *@
+                </li>
+            </ul>
+        </nav>
+        <div class="content-inner">
+            <main id="pageBody">
+                @RenderBody()
+            </main>
+            <footer class="main-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/js/Profile.js"></script>
+</body>
+</html>

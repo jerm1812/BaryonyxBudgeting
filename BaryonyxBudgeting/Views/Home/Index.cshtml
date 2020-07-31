@@ -1,0 +1,202 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<section id="intro">
+    <header class="header">
+        <nav class="navbar bg-transparent">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header">
+                        <a asp-controller="Home" asp-action="Index" class="navbar-brand d-sm-inline-block text-dark">
+                            <div class="navbar-brand d-none d-md-inline-block"><span>Baryonyx</span><strong>Budgeting</strong></div>
+                            <div class="navbar-brand d-sm-inline-block d-md-none"><strong>BS</strong></div>
+                        </a>
+                    </div>
+                    <ul id="nav-links" class="nav d-flex flex-md-row align-items-center">
+                        <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
+                        @* <li class="nav-item"><a asp-controller="About" asp-action="Index" class="nav-link">About</a></li> *@
+                        @* <li class="nav-item"><a asp-controller="Feedback" asp-action="Index" class="nav-link">Feedback</a></li> *@
+                        <li class="nav-item"><a asp-controller="Account" asp-action="Login" class="nav-link">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row mx-2 mx-sm-5 h-90">
+        <div id="introContent" class="col-xl-5 col-md-6 col-sm-8 p-4 mt-xl-5 mx-auto text-light my-auto">
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>BudgetSafe</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="font-weight-bold">Register for free today to start creating your personalized budget!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-right">
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-lg btn-primary mt-2">Sign up</a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <p class="text-light mb-0 mt-2">
+                        Photo by bongkarn thanyakij from Pexels
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5"></div>
+    </div>
+        
+</section>
+
+@* Personalization section *@
+<div class="page">
+    <section id="personalization" class="pt-md-4 pt-2 pb-3 home-section">
+        <div class="item mx-md-5 mx-2 mb-0">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-xl-7">
+                        <h2 class="display-4">Personalization</h2>
+                    </div>
+                </div>
+                <div class="row pb-3 px-md-5 px-2">
+                    <div class="col-xl-7 my-auto px-lg-5 px-2">
+                        <p class="mb-5 pt-xl-0 pt-3">
+                            As a free user, you will be able to create up to five different budgets.
+                            Each budget will have the capability to hold twenty different categories.
+                            The budget can also be set to a yearly, quarterly, or monthly time frame.
+                        </p>
+                        <p>
+                            When starting out on a new budget, you will be able to set a total amount for that budget. An example for that would be your estimated monthly wages.
+                            For each of the categories in your budget you will be able to set the amount to be a set amount for things such as rent or you will be able to set the amount to a percentage of the budget total.
+                        </p>
+                    </div>
+                    <div class="col-xl-5 my-auto home-image mx-auto">
+                        <div class="bg-grey p-1 text-center">
+                            <img src="~/Images/placeholder.png" alt="Placeholder Image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="share" class="pt-3 pb-3 home-section">
+        <div class="item mx-5 mb-0">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-xl-5"></div>
+                    <div class="col-xl-7">
+                        <h2 class="display-4">Share</h2>
+                    </div>
+                </div>
+                <div class="row pb-3 px-md-5 px-2">
+                    <div class="col-xl-5 my-auto home-image mx-auto">
+                        <div class="bg-grey p-1 text-center">
+                            <img src="~/Images/placeholder.png" alt="Placeholder Image" />
+                        </div>
+                    </div>
+                    <div class="col-xl-7 my-auto px-lg-5 px-2">
+                        <p class="mb-5 pt-xl-0 pt-3">
+                            If you want multiple people to be able to view or post to your budget all you have to do is add them as a friend and share your budget with them.
+
+                        </p>
+                        <p>
+                            With this, you will also have the ability to post a public template that other users of BudgetSafe will be able to import and use.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pricing pb-3">
+        <div class="mx-5 mx-0">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col">
+                        <h2 class="display-4">Pricing</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Free Tier -->
+                            <div class="col-lg-4 offset-lg-2">
+                                <div class="card mb-5 mb-lg-0">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
+                                        <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                                        <hr>
+                                        <ul class="fa-ul">
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>One</strong> Budget</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Five</strong> Friends</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Dedicated Phone Support</li>
+                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                        </ul>
+                                        <a href="#" class="btn btn-block btn-primary text-uppercase">Sign up now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pro Tier -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+                                        <h6 class="card-price text-center">$5<span class="period">/month</span></h6>
+                                        <hr>
+                                        <ul class="fa-ul">
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Baryonyx.Budgets</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Friends</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
+                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                        </ul>
+                                        <a href="#" class="btn btn-block btn-primary text-uppercase">Get started</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="share" class="pt-3 pb-3 home-section">
+        <div class="item mx-5 mb-0">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-xl-5"></div>
+                    <div class="col-xl-7">
+                        <h2 class="display-4">Share</h2>
+                    </div>
+                </div>
+                <div class="row pb-3 px-md-5 px-2">
+                    <div class="col-xl-5 my-auto home-image mx-auto">
+                        <div class="bg-grey p-1 text-center">
+                            <img src="~/Images/placeholder.png" alt="Placeholder Image" />
+                        </div>
+                    </div>
+                    <div class="col-xl-7 my-auto px-lg-5 px-2">
+                        <p class="mb-5 pt-xl-0 pt-3">
+                            If you want multiple people to be able to view or post to your budget all you have to do is add them as a friend and share your budget with them.
+
+                        </p>
+                        <p>
+                            With this, you will also have the ability to post a public template that other users of BudgetSafe will be able to import and use.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
