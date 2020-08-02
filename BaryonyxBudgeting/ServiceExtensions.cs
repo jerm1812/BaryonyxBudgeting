@@ -12,18 +12,6 @@ namespace BaryonyxBudgeting
     {
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            
-        }
-
-        public static void ConfigureDataConnections(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddDbContext<BaryonyxBudgetContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BaryonyxBudgeting"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
-            services.AddDbContext<BaryonyxSecurityContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BaryonyxSecurity"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
-            services.AddDbContext<BaryonyxUserContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BaryonyxUsers"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
-            
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 // Password requirements
@@ -36,6 +24,16 @@ namespace BaryonyxBudgeting
                 // User requirements
                 options.User.RequireUniqueEmail = true;
             }).AddRoles<IdentityRole>().AddEntityFrameworkStores<BaryonyxSecurityContext>();
+        }
+
+        public static void ConfigureDataConnections(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<BaryonyxBudgetContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("BaryonyxBudgeting"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
+            services.AddDbContext<BaryonyxSecurityContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("BaryonyxSecurity"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
+            services.AddDbContext<BaryonyxUserContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("BaryonyxUsers"), b => b.MigrationsAssembly("BaryonyxBudgeting")));
         }
         
     }

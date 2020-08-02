@@ -77,6 +77,7 @@
             </e>
           </e>
         </e>
+        <e p="Pages" t="Include" />
         <e p="Setup" t="Include">
           <e p="IdentityMocking.cs" t="Include" />
         </e>
@@ -103,23 +104,26 @@
         <e p="appsettings.json" t="Include" />
         <e p="BaryonyxBudgeting.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Components" t="Include">
+          <e p="BudgetViewComponent.cs" t="Include" />
+        </e>
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
           <e p="BudgetController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20200718211553_initial-b.cs" t="Include" />
-          <e p="20200718211553_initial-b.Designer.cs" t="Include" />
+          <e p="20200802002742_initial.cs" t="Include" />
+          <e p="20200802002742_initial.Designer.cs" t="Include" />
           <e p="BaryonyxBudgetContextModelSnapshot.cs" t="Include" />
           <e p="BaryonyxSecurity" t="Include">
-            <e p="20200718211645_initial-s.cs" t="Include" />
-            <e p="20200718211645_initial-s.Designer.cs" t="Include" />
+            <e p="20200802002758_initial.cs" t="Include" />
+            <e p="20200802002758_initial.Designer.cs" t="Include" />
             <e p="BaryonyxSecurityContextModelSnapshot.cs" t="Include" />
           </e>
           <e p="BaryonyxUser" t="Include">
-            <e p="20200718211716_initial-u.cs" t="Include" />
-            <e p="20200718211716_initial-u.Designer.cs" t="Include" />
+            <e p="20200802002809_initial.cs" t="Include" />
+            <e p="20200802002809_initial.Designer.cs" t="Include" />
             <e p="BaryonyxUserContextModelSnapshot.cs" t="Include" />
           </e>
         </e>
@@ -152,9 +156,8 @@
             <e p="Register.cshtml" t="Include" />
           </e>
           <e p="Budget" t="Include">
-            <e p="create-budget-script.cshtml" t="Include" />
-            <e p="create-budget-script.cshtml.cs" t="Include" />
-            <e p="CreateBudget.cshtml" t="Include" />
+            <e p="BudgetPartialView.cshtml" t="Include" />
+            <e p="CreateBudgetPartialView.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
@@ -167,6 +170,11 @@
             <e p="_LoginLayout.cshtml" t="Include" />
             <e p="_ProfileLayout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Components" t="Include">
+              <e p="Budget" t="Include">
+                <e p="BudgetViewComponent.cshtml" t="Include" />
+              </e>
+            </e>
             <e p="Error.cshtml" t="Include" />
           </e>
         </e>

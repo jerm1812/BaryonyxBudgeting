@@ -31,6 +31,7 @@ namespace BaryonyxBudgeting
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureDataConnections(Configuration);
+            services.ConfigureIdentity();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IBudgetRepository, EfBudgetRepository>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -41,13 +42,6 @@ namespace BaryonyxBudgeting
             services.AddAuthentication();
             services.AddAuthorization();
             services.AddSession();
-            // options =>
-            // {
-            //     options.IdleTimeout = TimeSpan.FromSeconds(10);
-            //     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-            //     options.Cookie.HttpOnly = true;
-            //     options.Cookie.IsEssential = true;
-            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +73,14 @@ namespace BaryonyxBudgeting
                     name: "Login",
                     pattern: "Login",
                     defaults: new { controller = "Account", Action = "Login" });
+                endpoints.MapControllerRoute(
+                    name: "Budgets",
+                    pattern: "Budgets",
+                    defaults: new { controller = "Budget", Action = "Index" });
+                endpoints.MapControllerRoute(
+                    name: "CreateBudget",
+                    pattern: "CreateBudget",
+                    defaults: new { controller = "Budget", Action = "CreateBudget" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

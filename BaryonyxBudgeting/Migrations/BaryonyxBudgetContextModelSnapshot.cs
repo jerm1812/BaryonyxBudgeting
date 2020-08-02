@@ -29,10 +29,8 @@ namespace BaryonyxBudgeting.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TimeFrame")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Total")
@@ -47,6 +45,39 @@ namespace BaryonyxBudgeting.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Budgets");
+                });
+
+            modelBuilder.Entity("Budgets.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BudgetId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BudgetId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Budgets.Models.Comment", b =>
@@ -83,14 +114,14 @@ namespace BaryonyxBudgeting.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PostedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("RowId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -100,57 +131,25 @@ namespace BaryonyxBudgeting.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RowId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Budgets.Models.Row", b =>
+            modelBuilder.Entity("Budgets.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BudgetId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Total")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BudgetId");
-
-                    b.ToTable("Rows");
-                });
-
-            modelBuilder.Entity("Budgets.Models.Post", b =>
-                {
-                    b.HasOne("Budgets.Models.Row", null)
-                        .WithMany("Posts")
-                        .HasForeignKey("RowId")
+                    b.HasOne("Budgets.Models.Budget", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("BudgetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Budgets.Models.Row", b =>
+            modelBuilder.Entity("Budgets.Models.Post", b =>
                 {
-                    b.HasOne("Budgets.Models.Budget", null)
-                        .WithMany("Rows")
-                        .HasForeignKey("BudgetId")
+                    b.HasOne("Budgets.Models.Category", null)
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

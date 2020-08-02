@@ -4,7 +4,7 @@
 
 
 function RegisterEvents() {
-    $('#createBudget').click(CreateBudget)
+    $('#create_budget_btn').click(CreateBudget)
 }
 
 
@@ -13,7 +13,7 @@ function CreateBudget() {
         url: "CreateBudget",
         type: "GET",
         success: function (response) {
-            $('#card').html(response);
+            $('#page_body').prepend(response);
         }
     })
 }

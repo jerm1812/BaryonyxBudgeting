@@ -10,8 +10,8 @@ using Users;
 namespace BaryonyxBudgeting.Migrations.BaryonyxUser
 {
     [DbContext(typeof(BaryonyxUserContext))]
-    [Migration("20200718211716_initial-u")]
-    partial class initialu
+    [Migration("20200802002809_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

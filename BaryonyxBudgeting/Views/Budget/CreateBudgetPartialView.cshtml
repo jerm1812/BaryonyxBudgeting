@@ -1,0 +1,65 @@
+﻿@model Budgets.Models.ViewModels.BudgetViewModel
+<section id="create_budget_section" class="item m-3 p-3 px-3">
+    <header class="row">
+        <div class="col">
+            <h2 class="">Create A New Budget</h2>
+        </div>
+    </header>
+    <div id="form_container" data-url="@Url.Action("UpdateBudget", "Budget")" class="row m-auto">
+        @using (Html.BeginForm("UpdateBudget", "Budget", FormMethod.Post, new {id = "createBudgetForm", @class = "w-100"}))
+        {
+            <div class="row m-auto">
+                <div class="form-group col-6">
+                    @Html.LabelFor(m => m.BudgetTitle)
+                    @Html.ValidationMessageFor(m => m.BudgetTitle, "", new {@class = "text-danger"})
+                    @Html.TextBoxFor(m => m.BudgetTitle, new {@class = "form-control"})
+                </div>
+    
+                <div class="form-group col-6">
+                    @Html.ValidationMessageFor(m => m.BudgetTotal, "", new {@class = "text-danger"})
+                    @Html.LabelFor(m => m.BudgetTotal)
+                    @Html.TextBoxFor(m => m.BudgetTotal, new {@class = "form-control"})
+                </div>
+            </div>
+    
+            <div id="categorySection" class="row m-auto">
+                <div class="form-group col-3">
+                    @Html.ValidationMessageFor(m => m.Categories[0].CategoryTitle, "", new {@class = "text-danger"})
+                    @Html.LabelFor(m => m.Categories[0].CategoryTitle)
+                    @Html.TextBoxFor(m => m.Categories[0].CategoryTitle, new {@class = "form-control"})
+                </div>
+    
+                <div class="form-group col-3">
+                    @Html.ValidationMessageFor(m => m.Categories[0].CategoryTotal, "", new {@class = "text-danger"})
+                    @Html.LabelFor(m => m.Categories[0].CategoryTotal)
+                    @Html.TextBoxFor(m => m.Categories[0].CategoryTotal, new {@class = "form-control"})
+                </div>
+    
+                <div class="form-group col-3">
+                    @Html.ValidationMessageFor(m => m.Categories[0].CategoryType, "", new {@class = "text-danger"})
+                    @Html.LabelFor(m => m.Categories[0].CategoryType)
+                    @Html.DropDownListFor(m => m.Categories[0].CategoryType, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"})
+                </div>
+    
+                <div class="form-group col-3 mt-auto text-center">
+                    <button type="button" class="btn btn-danger deleteCategory mx-auto">Delete Category</button>
+                </div>
+            </div>
+    
+            <div class="row m-auto">
+                <div class="col">
+                    <buttton id="addCategory" type="button" class="btn btn-default">Add Category</buttton>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col offset-9">
+                    <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+                    <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
+                </div>
+            </div>
+        }
+    </div>
+    <script src="js/create-budget.js"></script>
+</section>
+

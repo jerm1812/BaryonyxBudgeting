@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Budgets.Models;
+using Budgets.Models.ViewModels;
 
 namespace Budgets
 {
@@ -8,15 +9,16 @@ namespace Budgets
     {
         // Gets a list of different budget items
         IQueryable<Budget> Budgets { get; }
-        IQueryable<Category> Rows { get; }
+        IQueryable<Category> Categories { get; }
         IQueryable<Post> Posts { get; }
         
         // Baryonyx.Budgets
         IQueryable<Budget> GetUserBudgets(string id);
+        Budget CreateBudget(BudgetViewModel budget);
         Budget UpdateBudget(Budget budget);
         void DeleteBudget(int id);
         
-        // Budget lines
+        // Budget Categories
         IQueryable<Category> GetBudgetRows(int id);
         Category UpdateRow(Category category);
         void DeleteRow(int id);

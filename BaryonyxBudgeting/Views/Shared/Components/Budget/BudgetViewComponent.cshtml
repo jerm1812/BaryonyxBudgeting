@@ -1,0 +1,58 @@
+﻿@using Budgets.Extensions
+@model IQueryable<Budgets.Models.Budget>
+
+<section id="budget_section" class="item m-3 p-3 px-3">
+    <header class="row">
+        <div class="col">
+            <h2>Your Budgets</h2>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col">
+            @if (!Model.Any())
+            {
+                <div class="text-center">
+                    <p>You have not created any budgets yet!</p>
+                    <button id="create_budget_btn" type="button" class="btn btn-primary">Create Budget</button>
+                </div>
+            }
+            else
+            {
+                <table class="table table-bordered table-secondary table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Total</th>
+                        <th>Spent</th>
+                        <th class="d-none d-md-table-cell">Last Updated</th>
+                        <th class="d-none d-sm-table-cell">Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach (var budget in Model)
+                    {
+                        <tr id="@budget.Id">
+                            <td>@budget.Title</td>
+                            <td>@budget.AbbreviateTotal()</td>
+                            <td>@budget.TotalPosted()</td>
+                            <td class="d-none d-md-table-cell">@budget.UpdateDate</td>
+                            <td class="d-none d-sm-table-cell text-center">
+                                <button id="view-@budget.Id" class="btn btn-sm btn-primary viewBudget" type="button">View</button>
+                                <button id="edit-@budget.Id" class="btn btn-sm btn-warning d-none" type="button">Edit</button>
+                                <button id="delete-@budget.Id" class="btn btn-sm btn-success d-none d-sm-table-cell deleteBudget" type="button">Delete</button>
+                                <button id="share-@budget.Id" class="btn btn-sm btn-info d-none" type="button">Share</button>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button id="create_budget_btn" type="button" class="btn btn-primary">Create Budget</button>
+    </div>
+</section>

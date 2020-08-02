@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Budgets.Models;
+using Budgets.Models.ViewModels;
 
 namespace Budgets.Repositories
 {
@@ -14,7 +15,7 @@ namespace Budgets.Repositories
         }
 
         public IQueryable<Budget> Budgets => _context.Budgets;
-        public IQueryable<Category> Rows => _context.Rows;
+        public IQueryable<Category> Categories => _context.Categories;
         public IQueryable<Post> Posts => _context.Posts;
         
         // Budget methods //
@@ -24,16 +25,45 @@ namespace Budgets.Repositories
 
             foreach (var budget in budgets)
             {
-                budget.Rows = _context.Rows.Where(r => r.BudgetId == budget.Id);
+                budget.Categories = _context.Categories.Where(r => r.BudgetId == budget.Id).ToList();
 
-                foreach (var row in budget.Rows)
+                foreach (var row in budget.Categories)
                 {
                     row.Posts = _context.Posts.Where(p => p.CategoryId == row.Id);
                 }
             }
 
             return budgets;
-        } 
+        }
+
+        public Budget CreateBudget(BudgetViewModel budget)
+        {
+            var newBudget = new Budget()
+            {
+                UserId = budget.UserId,
+                Title = budget.BudgetTitle,
+                Total = budget.BudgetTotal,
+            };
+            
+            _context.Budgets.Add(newBudget);
+            _context.SaveChanges();
+
+            foreach (var newCategory in budget.Categories.Select(category => new Category()
+            {
+                BudgetId = newBudget.Id,
+                Title = category.CategoryTitle,
+                Total = category.CategoryType == CategoryType.Percent ? category.CategoryTotal * budget.BudgetTotal * 0.01m : category.CategoryTotal,
+                Type = category.CategoryType,
+                CreatedDate = DateTime.UtcNow,
+                UpdateDate = DateTime.UtcNow
+            }))
+            {
+                _context.Categories.Add(newCategory);
+            }
+            _context.SaveChanges();
+
+            return newBudget;
+        }
 
         public Budget UpdateBudget(Budget budget)
         {
@@ -49,7 +79,7 @@ namespace Budgets.Repositories
                 {
                     currentBudget.Title = budget.Title;
                     currentBudget.Total = budget.Total;
-                    currentBudget.Rows = budget.Rows;
+                    currentBudget.Categories = budget.Categories;
                     currentBudget.UpdateDate = DateTime.UtcNow;
                 }
             }
@@ -72,7 +102,7 @@ namespace Budgets.Repositories
 
         public IQueryable<Category> GetBudgetRows(int id)
         {
-            return _context.Rows.Where(r => r.BudgetId == id);
+            return _context.Categories.Where(r => r.BudgetId == id);
         }
 
         // Row methods //
@@ -80,11 +110,11 @@ namespace Budgets.Repositories
         {
             if (category.Id == 0)
             {
-                _context.Rows.Add(category);
+                _context.Categories.Add(category);
             }
             else
             {
-                var currentRow = _context.Rows.FirstOrDefault(r => r.Id == category.Id);
+                var currentRow = _context.Categories.FirstOrDefault(r => r.Id == category.Id);
                 
                 if (currentRow != null)
                 {
@@ -102,11 +132,11 @@ namespace Budgets.Repositories
 
         public void DeleteRow(int id)
         {
-            var row = _context.Rows.FirstOrDefault(r => r.Id == id);
+            var row = _context.Categories.FirstOrDefault(r => r.Id == id);
 
             if (row != null)
             {
-                _context.Rows.Remove(row);
+                _context.Categories.Remove(row);
             }
 
             _context.SaveChanges();

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BaryonyxBudgeting.Migrations
 {
-    public partial class initialb : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,9 +14,8 @@ namespace BaryonyxBudgeting.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
-                    TimeFrame = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdateDate = table.Column<DateTime>(nullable: false)
                 },
@@ -42,23 +41,23 @@ namespace BaryonyxBudgeting.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rows",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BudgetId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Total = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rows", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Rows_Budgets_BudgetId",
+                        name: "FK_Categories_Budgets_BudgetId",
                         column: x => x.BudgetId,
                         principalTable: "Budgets",
                         principalColumn: "Id",
@@ -71,7 +70,7 @@ namespace BaryonyxBudgeting.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RowId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     Amount = table.Column<decimal>(nullable: false),
@@ -82,22 +81,22 @@ namespace BaryonyxBudgeting.Migrations
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_Rows_RowId",
-                        column: x => x.RowId,
-                        principalTable: "Rows",
+                        name: "FK_Posts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_RowId",
-                table: "Posts",
-                column: "RowId");
+                name: "IX_Categories_BudgetId",
+                table: "Categories",
+                column: "BudgetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rows_BudgetId",
-                table: "Rows",
-                column: "BudgetId");
+                name: "IX_Posts_CategoryId",
+                table: "Posts",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -109,7 +108,7 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Posts");
 
             migrationBuilder.DropTable(
-                name: "Rows");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Budgets");

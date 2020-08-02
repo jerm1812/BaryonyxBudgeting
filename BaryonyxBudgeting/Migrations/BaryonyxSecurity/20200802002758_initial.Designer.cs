@@ -10,8 +10,8 @@ using Security;
 namespace BaryonyxBudgeting.Migrations.BaryonyxSecurity
 {
     [DbContext(typeof(BaryonyxSecurityContext))]
-    [Migration("20200718211645_initial-s")]
-    partial class initials
+    [Migration("20200802002758_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

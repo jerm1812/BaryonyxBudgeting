@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Budgets;
@@ -20,7 +21,8 @@ namespace BaryonyxBudgeting.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
 
-        public BudgetController(IBudgetRepository repository, UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public BudgetController(IBudgetRepository repository, UserManager<IdentityUser> userManager,
+            IConfiguration configuration)
         {
             _repository = repository;
             _userManager = userManager;
@@ -29,19 +31,23 @@ namespace BaryonyxBudgeting.Controllers
 
         [Route("/Budgets")]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            var budgets = _repository.GetUserBudgets(user.Id);
-            
-            return View(budgets);
+            return View();
+        }
+
+        [Route("/BudgetPartial")]
+        [HttpGet]
+        public ViewComponentResult BudgetPartialView()
+        {
+            return ViewComponent("Budget");
         }
 
         [Route("/CreateBudget")]
         [HttpGet]
         public PartialViewResult CreateBudget()
         {
-            return PartialView("CreateBudget");
+            return PartialView("CreateBudgetPartialView", new BudgetViewModel());
         }
 
         [HttpGet("CheckBudgetLimit")]
@@ -50,23 +56,24 @@ namespace BaryonyxBudgeting.Controllers
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var budgets = _repository.GetUserBudgets(user.Id);
 
-            return budgets.Count() < _configuration.GetValue<int>("BudgetLimit") ? Ok("can create budget") : Problem("budget limit reached");
+            return budgets.Count() < _configuration.GetValue<int>("BudgetLimit")
+                ? Ok("can create budget")
+                : Problem("budget limit reached");
         }
 
-        [Route("/UpdateBudget")]
         [HttpPost]
-        public IActionResult UpdateBudget(BudgetViewModel model)
+        public async Task<JsonResult> UpdateBudget(BudgetViewModel model)
         {
-            try
+            Budget budget = null;
+            if (ModelState.IsValid)
             {
-                var valid = ModelState.IsValid;
-                return Json(new {success = valid, model = model});
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                model.UserId = user.Id;
+                budget = _repository.CreateBudget(model);
+                return Json(budget);
+            }
 
-            }
-            catch (Exception ex)
-            {
-                return Problem("unable to update budget" + ex);
-            }
+            return Json(model);
         }
     }
 }

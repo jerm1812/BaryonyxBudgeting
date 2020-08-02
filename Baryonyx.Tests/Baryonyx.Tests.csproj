@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <Folder Include="BudgetTests" />
+      <Folder Include="Pages" />
     </ItemGroup>
 
     <ItemGroup>
