@@ -1,4 +1,4 @@
-﻿@model Budgets.Models.ViewModels.BudgetViewModel
+﻿@model Budgets.Models.Budget
 
 <section id="create_budget_section" class="item mx-auto mt-3 p-3 px-3" style="width: 40%;">
     <header class="row">
@@ -11,36 +11,36 @@
         {
             <div class="row m-auto">
                 <div class="form-group col-6">
-                    @Html.LabelFor(m => m.BudgetTitle)
-                    @Html.ValidationMessageFor(m => m.BudgetTitle, "", new {@class = "text-danger"})
-                    @Html.TextBoxFor(m => m.BudgetTitle, new {@class = "form-control"})
+                    @Html.LabelFor(m => m.Title)
+                    @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
+                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
                 </div>
 
                 <div class="form-group col-6">
-                    @Html.ValidationMessageFor(m => m.BudgetTotal, "", new {@class = "text-danger"})
-                    @Html.LabelFor(m => m.BudgetTotal)
-                    @Html.TextBoxFor(m => m.BudgetTotal, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"})
+                    @Html.LabelFor(m => m.Total)
+                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control"})
                 </div>
             </div>
 
             <div id="category_section">
                 <div class="row m-auto category-0">
                     <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].CategoryTitle, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].CategoryTitle)
-                        @Html.TextBoxFor(m => m.Categories[0].CategoryTitle, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Categories[0].Title, "", new {@class = "text-danger"})
+                        @Html.LabelFor(m => m.Categories[0].Title)
+                        @Html.TextBoxFor(m => m.Categories[0].Title, new {@class = "form-control"})
                     </div>
 
                     <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].CategoryTotal, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].CategoryTotal)
-                        @Html.TextBoxFor(m => m.Categories[0].CategoryTotal, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Categories[0].Total, "", new {@class = "text-danger"})
+                        @Html.LabelFor(m => m.Categories[0].Total)
+                        @Html.TextBoxFor(m => m.Categories[0].Total, new {@class = "form-control"})
                     </div>
 
                     <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].CategoryType, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].CategoryType)
-                        @Html.DropDownListFor(m => m.Categories[0].CategoryType, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Categories[0].Type, "", new {@class = "text-danger"})
+                        @Html.LabelFor(m => m.Categories[0].Type)
+                        @Html.DropDownListFor(m => m.Categories[0].Type, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"})
                     </div>
 
                     <div class="form-group col-3 mt-auto text-center">

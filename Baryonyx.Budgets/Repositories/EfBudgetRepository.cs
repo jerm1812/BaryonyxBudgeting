@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Budgets.Models;
-using Budgets.Models.ViewModels;
 
 namespace Budgets.Repositories
 {
@@ -41,33 +40,20 @@ namespace Budgets.Repositories
             return _context.Budgets.FirstOrDefault(b => b.UserId == userId && b.Id == budgetId) != null;
         }
 
-        public Budget CreateBudget(BudgetViewModel budget)
+        public Budget CreateBudget(Budget budget)
         {
-            var newBudget = new Budget()
-            {
-                UserId = budget.UserId,
-                Title = budget.BudgetTitle,
-                Total = budget.BudgetTotal,
-            };
-            
-            _context.Budgets.Add(newBudget);
+            _context.Budgets.Add(budget);
             _context.SaveChanges();
 
-            foreach (var newCategory in budget.Categories.Select(category => new Category()
+            foreach (var category in budget.Categories)
             {
-                BudgetId = newBudget.Id,
-                Title = category.CategoryTitle,
-                Total = category.CategoryType == CategoryType.Percent ? category.CategoryTotal * budget.BudgetTotal * 0.01m : category.CategoryTotal,
-                Type = category.CategoryType,
-                CreatedDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow
-            }))
-            {
-                _context.Categories.Add(newCategory);
+                category.Id = 0;
+                _context.Categories.Add(category);
             }
+            
             _context.SaveChanges();
 
-            return newBudget;
+            return budget;
         }
 
         public Budget UpdateBudget(Budget budget)
@@ -75,6 +61,15 @@ namespace Budgets.Repositories
             if (budget.Id == 0)
             {
                 _context.Budgets.Add(budget);
+                _context.SaveChanges();
+
+                foreach (var category in budget.Categories)
+                {
+                    category.Id = 0;
+                    _context.Add(category);
+                }
+
+                return budget;
             }
             else
             {

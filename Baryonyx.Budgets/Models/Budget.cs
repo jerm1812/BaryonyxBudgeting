@@ -26,6 +26,6 @@ namespace Budgets.Models
         [Range(typeof(DateTime), "1/1/1900", "6/6/2079")]
         public DateTime UpdateDate { get; set; } = DateTime.UtcNow;
 
-        public ICollection<Category> Categories { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

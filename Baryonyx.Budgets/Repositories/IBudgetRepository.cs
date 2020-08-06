@@ -1,9 +1,7 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Budgets.Models;
-using Budgets.Models.ViewModels;
 
-namespace Budgets
+namespace Budgets.Repositories
 {
     public interface IBudgetRepository
     {
@@ -15,7 +13,7 @@ namespace Budgets
         // Baryonyx.Budgets
         IQueryable<Budget> GetUserBudgets(string id);
         bool IsUsersBudget(string userId, int budgetId);
-        Budget CreateBudget(BudgetViewModel budget);
+        Budget CreateBudget(Budget budget);
         Budget UpdateBudget(Budget budget);
         void DeleteBudget(int id);
         

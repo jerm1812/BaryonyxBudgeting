@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Budgets;
 using Budgets.Models;
-using Budgets.Models.ViewModels;
+using Budgets.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +48,7 @@ namespace BaryonyxBudgeting.Controllers
         [HttpGet]
         public PartialViewResult CreateBudget()
         {
-            return PartialView("CreateBudgetPartialView", new BudgetViewModel());
+            return PartialView("CreateBudgetPartialView", new Budget());
         }
 
         [Route("/DeleteBudget")]
@@ -79,14 +79,13 @@ namespace BaryonyxBudgeting.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> UpdateBudget(BudgetViewModel model)
+        public async Task<JsonResult> UpdateBudget(Budget model)
         {
-            Budget budget = null;
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 model.UserId = user.Id;
-                budget = _repository.CreateBudget(model);
+                var budget = _repository.CreateBudget(model);
                 return Json(budget);
             }
 
