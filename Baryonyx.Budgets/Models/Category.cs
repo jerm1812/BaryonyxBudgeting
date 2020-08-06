@@ -12,6 +12,7 @@ namespace Budgets.Models
         
         [Required(ErrorMessage = "Category needs a title")]
         [Display(Name = "Category Title")]
+        [MinLength(2), MaxLength(50)]
         public string Title { get; set; }
         
         [Required(ErrorMessage = "Category needs a total")]

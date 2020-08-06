@@ -36,6 +36,11 @@ namespace Budgets.Repositories
             return budgets;
         }
 
+        public bool IsUsersBudget(string userId, int budgetId)
+        {
+            return _context.Budgets.FirstOrDefault(b => b.UserId == userId && b.Id == budgetId) != null;
+        }
+
         public Budget CreateBudget(BudgetViewModel budget)
         {
             var newBudget = new Budget()
@@ -152,7 +157,7 @@ namespace Budgets.Repositories
         {
             if (post.Id == 0)
             {
-                _context.Add(post);
+                _context.Posts.Add(post);
             }
             else
             {
@@ -160,7 +165,7 @@ namespace Budgets.Repositories
 
                 if (currentPost != null)
                 {
-                    currentPost.Amount = post.Amount;
+                    currentPost.Total = post.Total;
                     currentPost.Title = post.Title;
                     currentPost.Notes = post.Notes;
                     currentPost.UpdateDate = DateTime.UtcNow;

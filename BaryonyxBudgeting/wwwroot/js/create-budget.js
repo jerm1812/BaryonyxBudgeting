@@ -3,21 +3,13 @@
 let categoryCount = 1;
 
 function RegisterEvents() {
-    $('#cancel').click(CloseCreateBudget);
-    $('#addCategory').click(AddCategory);
-    $('#createBudgetForm').submit(function (e) {
+    let pageBody = $('#page_body');
+    pageBody.on("click", "#cancel_btn", CloseCreateBudget);
+    pageBody.on("click", "#add_category", AddCategory);
+    pageBody.on("click", ".remove-category", RemoveCategory);
+    pageBody.on("submit", "#create_budget_form", function (e) {
         e.preventDefault();
         CreateBudget($(this));
-    });
-}
-
-function ReloadBudgets() {
-    $.ajax({
-        url: "BudgetPartial",
-        type: "GET",
-        success: function (response) {
-            $('#budget_section').replaceWith(response);
-        }
     });
 }
 
@@ -48,7 +40,7 @@ function CreateBudget(data) {
 }
 
 function AddCategory() {
-    $('#categorySection').append("<div class=\"form-group col-3\"><span class=\"field-validation-valid text-danger\" data-valmsg-for=\"Categories["+categoryCount+"].CategoryTitle\" data-valmsg-replace=\"true\"></span>\
+    $('#category_section').append("<div class=\"row m-auto category-"+categoryCount+"\"><div class=\"form-group col-3\"><span class=\"field-validation-valid text-danger\" data-valmsg-for=\"Categories["+categoryCount+"].CategoryTitle\" data-valmsg-replace=\"true\"></span>\
                                         <label for=\"Categories_"+categoryCount+"__CategoryTitle\">Category Title</label>\
                                         <input class=\"form-control\" data-val=\"true\" data-val-required=\"Category needs a title\" id=\"Categories_"+categoryCount+"__CategoryTitle\" name=\"Categories["+categoryCount+"].CategoryTitle\" type=\"text\" value=\"\">\
                                 </div>\
@@ -65,9 +57,14 @@ function AddCategory() {
                                     </select>\
                                 </div>\
                                 <div class=\"form-group col-3 mt-auto text-center\">\
-                                    <button type=\"button\" class=\"btn btn-danger deleteCategory mx-auto\">Delete Category</button>\
-                                </div>");
+                                    <button id='category_btn_"+categoryCount+"' type=\"button\" class=\"btn btn-danger remove-category mx-auto \">Remove</button>\
+                                </div></div>");
     
     categoryCount++;
+}
+
+function RemoveCategory() {
+    let id = this.getAttribute("id").replace("_btn_", "-");
+    $("." + id).remove();
 }
 

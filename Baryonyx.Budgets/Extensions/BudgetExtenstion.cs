@@ -20,7 +20,7 @@ namespace Budgets.Extensions
 
         public static decimal TotalPosted(this Budget budget)
         {
-            return budget.Categories.Sum(r => r.Posts.Sum(post => post.Amount));
+            return budget.Categories.Sum(r => r.Posts.Sum(post => post.Total));
         }
     }
 }

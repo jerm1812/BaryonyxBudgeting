@@ -14,6 +14,7 @@ namespace Budgets
         
         // Baryonyx.Budgets
         IQueryable<Budget> GetUserBudgets(string id);
+        bool IsUsersBudget(string userId, int budgetId);
         Budget CreateBudget(BudgetViewModel budget);
         Budget UpdateBudget(Budget budget);
         void DeleteBudget(int id);

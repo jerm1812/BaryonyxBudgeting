@@ -11,13 +11,13 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Budgets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,33 +25,17 @@ namespace BaryonyxBudgeting.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SenderId = table.Column<int>(nullable: false),
-                    BudgetId = table.Column<int>(nullable: false),
-                    CommentId = table.Column<int>(nullable: false),
-                    SentDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BudgetId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false),
-                    Type = table.Column<int>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    BudgetId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,14 +52,14 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    Notes = table.Column<string>(nullable: true),
-                    Amount = table.Column<decimal>(nullable: false),
-                    PostedDate = table.Column<DateTime>(nullable: false),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Notes = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
+                    PostedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,9 +85,6 @@ namespace BaryonyxBudgeting.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Comments");
-
             migrationBuilder.DropTable(
                 name: "Posts");
 

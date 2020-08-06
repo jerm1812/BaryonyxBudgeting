@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Budgets;
 using Budgets.Models;
@@ -36,7 +37,7 @@ namespace BaryonyxBudgeting.Controllers
             return View();
         }
 
-        [Route("/BudgetPartial")]
+        [Route("/BudgetList")]
         [HttpGet]
         public ViewComponentResult BudgetPartialView()
         {
@@ -48,6 +49,22 @@ namespace BaryonyxBudgeting.Controllers
         public PartialViewResult CreateBudget()
         {
             return PartialView("CreateBudgetPartialView", new BudgetViewModel());
+        }
+
+        [Route("/DeleteBudget")]
+        [HttpPost]
+        public async Task<JsonResult> DeleteBudget(string id)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (_repository.IsUsersBudget(user.Id, int.Parse(id)))
+            {
+                _repository.DeleteBudget(int.Parse(id));
+                return Json($"Budget with the id: {id} was deleted successfully");
+            }
+            else
+            {
+                return Json($"There was an error deleting the budget with the id: {id}");
+            }
         }
 
         [HttpGet("CheckBudgetLimit")]

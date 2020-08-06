@@ -4,7 +4,14 @@
 <section id="budget_section" class="item m-3 p-3 px-3">
     <header class="row">
         <div class="col">
-            <h2>Your Budgets</h2>
+            @if (Model.Count() <= 1)
+            {
+                <h2>Your Budget</h2>
+            }
+            else
+            {
+                <h2>Your Budgets</h2>
+            }
         </div>
     </header>
 
@@ -39,10 +46,10 @@
                             <td>@budget.TotalPosted()</td>
                             <td class="d-none d-md-table-cell">@budget.UpdateDate</td>
                             <td class="d-none d-sm-table-cell text-center">
-                                <button id="view-@budget.Id" class="btn btn-sm btn-primary viewBudget" type="button">View</button>
-                                <button id="edit-@budget.Id" class="btn btn-sm btn-warning d-none" type="button">Edit</button>
-                                <button id="delete-@budget.Id" class="btn btn-sm btn-success d-none d-sm-table-cell deleteBudget" type="button">Delete</button>
-                                <button id="share-@budget.Id" class="btn btn-sm btn-info d-none" type="button">Share</button>
+                                <button id="view_@budget.Id" class="btn btn-sm btn-primary view-budget" type="button">View</button>
+                                <button id="edit_@budget.Id" class="btn btn-sm btn-warning d-none" type="button">Edit</button>
+                                <button id="delete_@budget.Id" class="btn btn-sm btn-success d-none d-sm-table-cell delete-budget" type="button">Delete</button>
+                                <button id="share_@budget.Id" class="btn btn-sm btn-info d-none" type="button">Share</button>
                             </td>
                         </tr>
                     }
