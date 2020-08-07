@@ -13,40 +13,66 @@
                 <div class="form-group col-6">
                     @Html.LabelFor(m => m.Title)
                     @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
-                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
+                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id="budget_title_input"})
                 </div>
 
                 <div class="form-group col-6">
                     @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"})
                     @Html.LabelFor(m => m.Total)
-                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control"})
+                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id="budget_total_input"})
                 </div>
             </div>
 
             <div id="category_section">
-                <div class="row m-auto category-0">
-                    <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].Title, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].Title)
-                        @Html.TextBoxFor(m => m.Categories[0].Title, new {@class = "form-control"})
-                    </div>
+                <h3>Categories</h3>
+                @* <div class="row m-auto category-0"> *@
+                @*     <div class="form-group col-3"> *@
+                @*         @Html.ValidationMessageFor(m => m.Categories[0].Title, "", new {@class = "text-danger"}) *@
+                @*         @Html.LabelFor(m => m.Categories[0].Title) *@
+                @*         @Html.TextBoxFor(m => m.Categories[0].Title, new {@class = "form-control"}) *@
+                @*     </div> *@
+                @* *@
+                @*     <div class="form-group col-3"> *@
+                @*         @Html.ValidationMessageFor(m => m.Categories[0].Total, "", new {@class = "text-danger"}) *@
+                @*         @Html.LabelFor(m => m.Categories[0].Total) *@
+                @*         @Html.TextBoxFor(m => m.Categories[0].Total, new {@class = "form-control"}) *@
+                @*     </div> *@
+                @* *@
+                @*     <div class="form-group col-3"> *@
+                @*         @Html.ValidationMessageFor(m => m.Categories[0].Type, "", new {@class = "text-danger"}) *@
+                @*         @Html.LabelFor(m => m.Categories[0].Type) *@
+                @*         @Html.DropDownListFor(m => m.Categories[0].Type, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"}) *@
+                @*     </div> *@
+                @* *@
+                @* <div class="form-group col-3 mt-auto text-center"> *@
+                @*     <button id="category_btn_0" type="button" class="btn btn-danger remove-category mx-auto">Remove</button> *@
+                @* </div> *@
+                @* </div> *@
 
-                    <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].Total, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].Total)
-                        @Html.TextBoxFor(m => m.Categories[0].Total, new {@class = "form-control"})
+                <div class="row m-auto category category-0">
+                    <div class="form-group title col-3">
+                        <span class="field-validation-valid text-danger text-small" data-valmsg-for="category-title-name-0" data-valmsg-replace="true"></span>
+                        <label for="category-title-0">Title</label>
+                        <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"  />
                     </div>
-
-                    <div class="form-group col-3">
-                        @Html.ValidationMessageFor(m => m.Categories[0].Type, "", new {@class = "text-danger"})
-                        @Html.LabelFor(m => m.Categories[0].Type)
-                        @Html.DropDownListFor(m => m.Categories[0].Type, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"})
+                    <div class="form-group total col-3">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="category-total-name-0" data-valmsg-replace="true"></span>
+                        <label for="category-total-0">Total</label>
+                        <input id="category-total-0" name="category-total-name-0" type="number" class="form-control" data-val-number="Must be a number" data-val-required="*" data-val="true" value="">
                     </div>
-
-                    <div class="form-group col-3 mt-auto text-center">
-                        <button id="category_btn_0" type="button" class="btn btn-danger remove-category mx-auto">Remove</button>
+                    <div class="form-group type col-3">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="category-type-name-0" data-val></span>
+                        <label for="category-type-0">Type</label>
+                        <select id="category-type-0" name="category-type-name-0" class="form-control" data-val="true" data-val-required="*">
+                            <option value="0">Amount</option>
+                            <option value="1">Percent</option>
+                        </select>
                     </div>
                 </div>
+
+            </div>
+
+            <div>
 
             </div>
 

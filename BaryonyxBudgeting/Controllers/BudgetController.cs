@@ -85,11 +85,13 @@ namespace BaryonyxBudgeting.Controllers
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 model.UserId = user.Id;
-                var budget = _repository.CreateBudget(model);
+                var budget = _repository.UpdateBudget(model);
                 return Json(budget);
             }
-
-            return Json(model);
+            else
+            {
+                return Json(model);
+            }
         }
     }
 }

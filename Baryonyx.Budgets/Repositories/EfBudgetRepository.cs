@@ -61,15 +61,6 @@ namespace Budgets.Repositories
             if (budget.Id == 0)
             {
                 _context.Budgets.Add(budget);
-                _context.SaveChanges();
-
-                foreach (var category in budget.Categories)
-                {
-                    category.Id = 0;
-                    _context.Add(category);
-                }
-
-                return budget;
             }
             else
             {
@@ -83,7 +74,7 @@ namespace Budgets.Repositories
                     currentBudget.UpdateDate = DateTime.UtcNow;
                 }
             }
-
+            
             _context.SaveChanges();
             return budget;
         }
