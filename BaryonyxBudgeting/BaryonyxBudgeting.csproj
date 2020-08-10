@@ -22,8 +22,7 @@
 
     <ItemGroup>
       <Folder Include="TagHelpers" />
-      <Folder Include="wwwroot\lib\font-awesome\less" />
-      <Folder Include="wwwroot\lib\font-awesome\scss" />
+      <Folder Include="wwwroot\lib\datatables\dist" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,6 +35,15 @@
       <_ContentIncludedByDefault Remove="wwwroot\font-awesome\fonts\fontawesome-webfont.woff2" />
       <_ContentIncludedByDefault Remove="wwwroot\font-awesome\fonts\FontAwesome.otf" />
       <_ContentIncludedByDefault Remove="wwwroot\font-awesome\HELP-US-OUT.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\css\font-awesome.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\css\font-awesome.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\fonts\FontAwesome.otf" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\font-awesome\HELP-US-OUT.txt" />
     </ItemGroup>
 
 </Project>

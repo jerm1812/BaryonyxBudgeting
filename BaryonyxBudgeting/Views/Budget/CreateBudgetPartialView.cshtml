@@ -13,47 +13,23 @@
                 <div class="form-group col-6">
                     @Html.LabelFor(m => m.Title)
                     @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
-                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id="budget_title_input"})
+                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id = "budget_title_input"})
                 </div>
 
                 <div class="form-group col-6">
                     @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"})
                     @Html.LabelFor(m => m.Total)
-                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id="budget_total_input"})
+                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id = "budget_total_input"})
                 </div>
             </div>
 
             <div id="category_section">
                 <h3>Categories</h3>
-                @* <div class="row m-auto category-0"> *@
-                @*     <div class="form-group col-3"> *@
-                @*         @Html.ValidationMessageFor(m => m.Categories[0].Title, "", new {@class = "text-danger"}) *@
-                @*         @Html.LabelFor(m => m.Categories[0].Title) *@
-                @*         @Html.TextBoxFor(m => m.Categories[0].Title, new {@class = "form-control"}) *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="form-group col-3"> *@
-                @*         @Html.ValidationMessageFor(m => m.Categories[0].Total, "", new {@class = "text-danger"}) *@
-                @*         @Html.LabelFor(m => m.Categories[0].Total) *@
-                @*         @Html.TextBoxFor(m => m.Categories[0].Total, new {@class = "form-control"}) *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="form-group col-3"> *@
-                @*         @Html.ValidationMessageFor(m => m.Categories[0].Type, "", new {@class = "text-danger"}) *@
-                @*         @Html.LabelFor(m => m.Categories[0].Type) *@
-                @*         @Html.DropDownListFor(m => m.Categories[0].Type, new List<SelectListItem>() {new SelectListItem() {Value = "0", Text = "Amount"}, new SelectListItem() {Value = "1", Text = "Percent"}}, new {@class = "form-control"}) *@
-                @*     </div> *@
-                @* *@
-                @* <div class="form-group col-3 mt-auto text-center"> *@
-                @*     <button id="category_btn_0" type="button" class="btn btn-danger remove-category mx-auto">Remove</button> *@
-                @* </div> *@
-                @* </div> *@
-
                 <div class="row m-auto category category-0">
                     <div class="form-group title col-3">
                         <span class="field-validation-valid text-danger text-small" data-valmsg-for="category-title-name-0" data-valmsg-replace="true"></span>
                         <label for="category-title-0">Title</label>
-                        <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"  />
+                        <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"/>
                     </div>
                     <div class="form-group total col-3">
                         <span class="field-validation-valid text-danger" data-valmsg-for="category-total-name-0" data-valmsg-replace="true"></span>
@@ -69,24 +45,15 @@
                         </select>
                     </div>
                 </div>
-
             </div>
 
-            <div>
-
+            <div class="ml-3 float-left">
+                <buttton id="add_category" type="button" class="btn btn-default">Add Category</buttton>
             </div>
 
-            <div class="row m-auto">
-                <div class="col">
-                    <buttton id="add_category" type="button" class="btn btn-default">Add Category</buttton>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col offset-7">
-                    <button id="cancel_btn" type="button" class="btn btn-danger">Cancel</button>
-                    <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
-                </div>
+            <div class="float-right">
+                <button id="cancel_btn" type="button" class="btn btn-danger">Cancel</button>
+                <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
             </div>
         }
     </div>

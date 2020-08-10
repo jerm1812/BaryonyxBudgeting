@@ -1,0 +1,84 @@
+nav.navbar.navbar-expand.bg-dark {
+    z-index: 2;
+}
+
+#sidebar_layout {
+    display: flex;
+    padding-top: 56px;
+}
+
+#sidebar_nav {
+    flex-grow: 1;
+    color: rgba(255,255,255,.5);
+    position: fixed;
+    z-index: 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+}
+
+nav#sidebar {
+    background-color: #212529;
+    height: 100vh;
+    width: 225px;
+}
+
+#sidebar .nav-link > svg {
+    margin-right: 1rem;
+}
+
+.sidebar-heading {
+    font-weight: bold;
+    padding: 1.75rem 1rem .75rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.sidebar-footer {
+    padding: 1rem;
+}
+
+#sidebar_content {
+    position: relative;
+    width: 100%;
+    background-color: #eee;
+}
+
+#sidebar_content.active-nav {
+    padding-left: 225px;
+}
+
+.card-icon {
+    width: 75px;
+    height: 75px;
+    background-color: orange;
+    float: left;
+    margin-left: 25px;
+    margin-top: -20px;
+    border-radius: 5%;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(233,30,99,.4);
+}
+
+.card-icon>svg {
+    margin: 18% 0;
+}
+
+#test2 {
+    height: 125px;
+}
+
+.card {
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.card-top>h4 {
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+
+.card-top-small>h4 {
+    margin-top: 1rem;
+    padding-right: 100px;
+}
+
+.breadcrumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}

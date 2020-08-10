@@ -93,5 +93,23 @@ namespace BaryonyxBudgeting.Controllers
                 return Json(model);
             }
         }
+
+        [Route("Test")]
+        [HttpGet]
+        public async Task<IActionResult> Test()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            ViewBag.userName = user.UserName;
+            return View("NewIndex");
+        }
+        
+        [Route("NewTest")]
+        [HttpGet]
+        public async Task<IActionResult> NewTest()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            ViewBag.userName = user.UserName;
+            return View("NewTest");
+        }
     }
 }

@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "_NewTestLayout";
+}
+
+<div class="container-fluid">
+<h1 class="mt-4">Dashboard</h1>
+
+<ol class="breadcrumb mb-5">
+    <li class="breadcrumb-item active">Activity</li>
+</ol>
+
+<div class="row">
+    <div class="col-lg-5 col-md-9 col-sm-12">
+        <section class="card mb-4">
+            <div class="card-top-small text-center">
+                <div class="card-icon text-center">
+                    <i class="fas fa-plus fa-3x"></i>
+                </div>
+                <h4>Create Budget</h4>
+            </div>
+            <div class="card-body">
+                <div id="form_container" data-url="@Url.Action("UpdateBudget", "Budget")" class="row m-auto">
+                    @using (Html.BeginForm("UpdateBudget", "Budget", FormMethod.Post, new {id = "create_budget_form", @class = "w-100"}))
+                    {
+@*                             <div class="row m-auto"> *@
+@*                                 <div class="form-group col-6"> *@
+@*                                     @Html.LabelFor(m => m.Title) *@
+@*                                     @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"}) *@
+@*                                     @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id = "budget_title_input"}) *@
+@*                                 </div> *@
+@*                  *@
+@*                                 <div class="form-group col-6"> *@
+@*                                     @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"}) *@
+@*                                     @Html.LabelFor(m => m.Total) *@
+@*                                     @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id = "budget_total_input"}) *@
+@*                                 </div> *@
+@*                             </div> *@
+
+                        <div id="category_section">
+                            <h3>Categories</h3>
+                            <div class="row m-auto category category-0">
+                                <div class="form-group title col-3">
+                                    <span class="field-validation-valid text-danger text-small" data-valmsg-for="category-title-name-0" data-valmsg-replace="true"></span>
+                                    <label for="category-title-0">Title</label>
+                                    <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"/>
+                                </div>
+                                <div class="form-group total col-3">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="category-total-name-0" data-valmsg-replace="true"></span>
+                                    <label for="category-total-0">Total</label>
+                                    <input id="category-total-0" name="category-total-name-0" type="number" class="form-control" data-val-number="Must be a number" data-val-required="*" data-val="true" value="">
+                                </div>
+                                <div class="form-group type col-3">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="category-type-name-0" data-val></span>
+                                    <label for="category-type-0">Type</label>
+                                    <select id="category-type-0" name="category-type-name-0" class="form-control" data-val="true" data-val-required="*">
+                                        <option value="0">Amount</option>
+                                        <option value="1">Percent</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr/>
+
+                        <div class="float-left">
+                            <buttton id="add_category" type="button" class="btn btn-dark">Add Category</buttton>
+                        </div>
+
+                        <div class="float-right">
+                            <button id="cancel_btn" type="button" class="btn btn-danger">Cancel</button>
+                            <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <section class="card mb-4">
+            <div class="card-top">
+                <div class="card-icon text-center">
+                    <i class="fa fa-chart-bar fa-3x"></i>
+                </div>
+                <h4>Test Chart</h4>
+            </div>
+            <div id="test2" class="card-body">
+
+            </div>
+        </section>
+    </div>
+
+    <div class="col-6">
+        <section class="card mb-4">
+            <div class="card-top">
+                <div class="card-icon text-center">
+                    <i class="fa fa-chart-bar fa-3x"></i>
+                </div>
+                <h4>Test Chart</h4>
+            </div>
+            <div id="test2" class="card-body">
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<ol class="breadcrumb mb-5">
+    <li class="breadcrumb-item active">Your Budgets</li>
+</ol>
+
+<section class="card mb-5">
+    <div class="card-top">
+        <div class="card-icon text-center">
+            <i class="fa fa-table fa-3x"></i>
+        </div>
+        <h4>Test Budget</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-hover" id="personal_budget_table2" aria-describedby="dataTable_info">
+                    <thead>
+                    <tr role="row">
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td>Airi Satou</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>33</td>
+                        <td>2008/11/28</td>
+                        <td>$162,700</td>
+                    </tr>
+                    <tr>
+                        <td>Angelica Ramos</td>
+                        <td>Chief Executive Officer (CEO)</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>2009/10/09</td>
+                        <td>$1,200,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009/01/12</td>
+                        <td>$86,000</td>
+                    </tr>
+                    <tr>
+                        <td>Bradley Greer</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>41</td>
+                        <td>2012/10/13</td>
+                        <td>$132,000</td>
+                    </tr>
+                    <tr>
+                        <td>Brenden Wagner</td>
+                        <td>Software Engineer</td>
+                        <td>San Francisco</td>
+                        <td>28</td>
+                        <td>2011/06/07</td>
+                        <td>$206,850</td>
+                    </tr>
+                    <tr>
+                        <td>Brielle Williamson</td>
+                        <td>Integration Specialist</td>
+                        <td>New York</td>
+                        <td>61</td>
+                        <td>2012/12/02</td>
+                        <td>$372,000</td>
+                    </tr>
+                    <tr>
+                        <td>Bruno Nash</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>38</td>
+                        <td>2011/05/03</td>
+                        <td>$163,500</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row">
+    <div class="col-lg-5 col-md-9 cl-sm-12 ">
+        <section class="card mb-4">
+            <div class="card-top-small text-center">
+                <div class="card-icon text-center">
+                    <i class="fas fa-plus fa-3x"></i>
+                </div>
+                <h4>Create Budget</h4>
+            </div>
+            <div class="card-body text-center">
+                <p>Is your budget just not good enough? Why not create another!</p>
+                <button id="create_budget_btn" type="button" class="btn btn-primary float-right">Create Budget</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Budgets Shared With You</li>
+</ol>
+</div>

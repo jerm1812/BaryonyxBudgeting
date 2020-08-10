@@ -16,7 +16,14 @@
                         <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
                         @* <li class="nav-item"><a asp-controller="About" asp-action="Index" class="nav-link">About</a></li> *@
                         @* <li class="nav-item"><a asp-controller="Feedback" asp-action="Index" class="nav-link">Feedback</a></li> *@
-                        <li class="nav-item"><a asp-controller="Account" asp-action="Login" class="nav-link">Login</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><a asp-controller="Budget" asp-action="Index" class="nav-link">Budgets</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a asp-controller="Account" asp-action="Login" class="nav-link">Login</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -65,9 +72,8 @@
                 <div class="row pb-3 px-md-5 px-2">
                     <div class="col-xl-7 my-auto px-lg-5 px-2">
                         <p class="mb-5 pt-xl-0 pt-3">
-                            As a free user, you will be able to create up to five different budgets.
-                            Each budget will have the capability to hold twenty different categories.
-                            The budget can also be set to a yearly, quarterly, or monthly time frame.
+                            As a free user, you will be able to create one budget.
+                            The budget will have the capability to hold ten different categories.
                         </p>
                         <p>
                             When starting out on a new budget, you will be able to set a total amount for that budget. An example for that would be your estimated monthly wages.
