@@ -11,10 +11,10 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Budgets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserId = table.Column<string>(maxLength: 450, nullable: true),
+                    Title = table.Column<string>(maxLength: 50, nullable: false),
                     Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
@@ -28,12 +28,12 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BudgetId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    BudgetId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(maxLength: 50, nullable: false),
                     Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },
@@ -52,12 +52,12 @@ namespace BaryonyxBudgeting.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Notes = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    Total = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(maxLength: 50, nullable: true),
+                    Notes = table.Column<string>(maxLength: 200, nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(11,2)", nullable: false),
                     PostedDate = table.Column<DateTime>(type: "smalldatetime", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },

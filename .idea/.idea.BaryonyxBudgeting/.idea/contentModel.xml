@@ -9,17 +9,18 @@
     <e p="C:\Users\jerem\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\jerem\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\jerem\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="C:\Users\jerem\.Rider2019.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\jerem\.Rider2019.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\jerem\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\jerem\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_BaryonyxBudgeting.-850167993.00" t="ExcludeRecursive" />
-    <e p="E:\Repo\BaryonyxBudgeting" t="IncludeFlat">
+    <e p="C:\Users\jerem\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jerem\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_BaryonyxBudgeting.1473859846.00" t="ExcludeRecursive" />
+    <e p="C:\Users\jerem\AppData\Roaming\JetBrains\Rider2020.1\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\jerem\AppData\Roaming\JetBrains\Rider2020.1\extensions" t="IncludeRecursive" />
+    <e p="D:\Repo\BaryonyxBudgeting" t="IncludeFlat">
       <e p="Baryonyx.Budgets" t="IncludeRecursive">
         <e p="Baryonyx.Budgets.csproj" t="IncludeRecursive" />
         <e p="BaryonyxBudgetContext.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="extensions" t="Include">
           <e p="BudgetExtenstion.cs" t="Include" />
+          <e p="CategoryExtensions.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Budget.cs" t="Include" />
@@ -107,10 +108,14 @@
           <e p="AccountController.cs" t="Include" />
           <e p="BudgetController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="extensions" t="Include">
+          <e p="CurrencyFormatter.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20200805215519_initial.cs" t="Include" />
-          <e p="20200805215519_initial.Designer.cs" t="Include" />
+          <e p="20200813142416_initial.cs" t="Include" />
+          <e p="20200813142416_initial.Designer.cs" t="Include" />
           <e p="BaryonyxBudgetContextModelSnapshot.cs" t="Include" />
           <e p="BaryonyxSecurity" t="Include">
             <e p="20200805021855_initial.cs" t="Include" />
@@ -156,7 +161,8 @@
             <e p="CreateBudgetPartialView.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="NewIndex.cshtml" t="Include" />
-            <e p="NewTest.cshtml" t="Include" />
+            <e p="OldIndex.cshtml" t="Include" />
+            <e p="PostToBudget.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
@@ -167,7 +173,7 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LoginLayout.cshtml" t="Include" />
             <e p="_NewBudgetLayout.cshtml" t="Include" />
-            <e p="_NewTestLayout.cshtml" t="Include" />
+            <e p="_OldBudgetLayout.cshtml" t="Include" />
             <e p="_ProfileLayout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
@@ -177,16 +183,14 @@
             </e>
             <e p="Error.cshtml" t="Include" />
           </e>
+          <e p="User" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
         </e>
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
-            <e p="dashboard.eot" t="Include" />
-            <e p="dashboard.svg" t="Include" />
-            <e p="dashboard.ttf" t="Include" />
-            <e p="dashboard.woff" t="Include" />
             <e p="fontastic.css" t="Include" />
             <e p="site.css" t="Include" />
-            <e p="style.default.css" t="Include" />
             <e p="styles.css" t="Include" />
             <e p="test.css" t="Include" />
           </e>

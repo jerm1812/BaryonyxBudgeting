@@ -18,9 +18,17 @@ namespace Budgets.Extensions
             return total;
         }
 
-        public static decimal TotalPosted(this Budget budget)
+        public static string TotalPosted(this Budget budget)
         {
-            return budget.Categories.Sum(r => r.Posts.Sum(post => post.Total));
+            string total;
+            var amount = budget.Categories.Sum(r => r.Posts.Sum(post => post.Amount));
+
+            if (amount > 9999)
+                total = (amount / 1000) + "K";
+            else
+                total = amount.ToString(CultureInfo.CurrentCulture);
+            
+            return total;
         }
     }
 }

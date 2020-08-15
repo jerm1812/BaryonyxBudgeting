@@ -11,19 +11,20 @@ namespace Budgets.Repositories
         IQueryable<Post> Posts { get; }
         
         // Baryonyx.Budgets
-        IQueryable<Budget> GetUserBudgets(string id);
+        Budget GetUserBudget(string id);
         bool IsUsersBudget(string userId, int budgetId);
         Budget CreateBudget(Budget budget);
         Budget UpdateBudget(Budget budget);
         void DeleteBudget(int id);
         
         // Budget Categories
-        IQueryable<Category> GetBudgetRows(int id);
-        Category UpdateRow(Category category);
-        void DeleteRow(int id);
+        bool IsUsersCategory(string userId, int categoryId);
+        IQueryable<Category> GetBudgetCategory(int id);
+        Category UpdateCategory(Category category);
+        void DeleteCategory(int id);
         
         // Budget posts
-        IQueryable<Post> GetRowPosts(int id);
+        IQueryable<Post> GetCategoryPosts(int id);
         Post UpdatePost(Post post);
         void DeletePost(int id);
     }

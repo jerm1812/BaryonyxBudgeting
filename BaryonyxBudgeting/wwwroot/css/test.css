@@ -25,6 +25,11 @@ nav#sidebar {
     margin-right: 1rem;
 }
 
+.sidebar-body .nav-link:hover, .active-sidebar-link {
+    background-color: #2d3339;
+    cursor: pointer;
+}
+
 .sidebar-heading {
     font-weight: bold;
     padding: 1.75rem 1rem .75rem;
@@ -42,6 +47,10 @@ nav#sidebar {
 }
 
 #sidebar_content.active-nav {
+    padding-left: 225px;
+}
+
+#sidebar_content.active-nav .modal {
     padding-left: 225px;
 }
 
@@ -74,6 +83,16 @@ nav#sidebar {
 }
 
 .card-top-small>h4 {
+    margin-top: 1rem;
+    padding-right: 100px;
+}
+
+.card-top>h3 {
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+
+.card-top-small>h3 {
     margin-top: 1rem;
     padding-right: 100px;
 }

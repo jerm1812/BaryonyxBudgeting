@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Linq;
 using Budgets.Models;
 
@@ -16,23 +17,22 @@ namespace Budgets.Repositories
         public IQueryable<Budget> Budgets => _context.Budgets;
         public IQueryable<Category> Categories => _context.Categories;
         public IQueryable<Post> Posts => _context.Posts;
-        
+
         // Budget methods //
-        public IQueryable<Budget> GetUserBudgets(string id)
+        public Budget GetUserBudget(string id)
         {
-            var budgets = Budgets.Where(b => b.UserId == id);
+            var budget = Budgets.FirstOrDefault(b => b.UserId == id);
 
-            foreach (var budget in budgets)
+            if (budget == null) return null;
+            
+            budget.Categories = _context.Categories.Where(r => r.BudgetId == budget.Id).ToList();
+
+            foreach (var category in budget.Categories)
             {
-                budget.Categories = _context.Categories.Where(r => r.BudgetId == budget.Id).ToList();
-
-                foreach (var row in budget.Categories)
-                {
-                    row.Posts = _context.Posts.Where(p => p.CategoryId == row.Id);
-                }
+                category.Posts = _context.Posts.Where(p => p.CategoryId == category.Id);
             }
 
-            return budgets;
+            return budget;
         }
 
         public bool IsUsersBudget(string userId, int budgetId)
@@ -50,7 +50,7 @@ namespace Budgets.Repositories
                 category.Id = 0;
                 _context.Categories.Add(category);
             }
-            
+
             _context.SaveChanges();
 
             return budget;
@@ -74,7 +74,7 @@ namespace Budgets.Repositories
                     currentBudget.UpdateDate = DateTime.UtcNow;
                 }
             }
-            
+
             _context.SaveChanges();
             return budget;
         }
@@ -91,13 +91,21 @@ namespace Budgets.Repositories
             _context.SaveChanges();
         }
 
-        public IQueryable<Category> GetBudgetRows(int id)
+        public bool IsUsersCategory(string userId, int categoryId)
+        {
+
+            var budget = _context.Budgets.FirstOrDefault(b => b.UserId == userId);
+
+            return _context.Categories.FirstOrDefault(c => c.Id == categoryId && c.BudgetId == budget.Id) != null;
+        }
+
+        public IQueryable<Category> GetBudgetCategory(int id)
         {
             return _context.Categories.Where(r => r.BudgetId == id);
         }
 
-        // Row methods //
-        public Category UpdateRow(Category category)
+        // Category methods //
+        public Category UpdateCategory(Category category)
         {
             if (category.Id == 0)
             {
@@ -106,7 +114,7 @@ namespace Budgets.Repositories
             else
             {
                 var currentRow = _context.Categories.FirstOrDefault(r => r.Id == category.Id);
-                
+
                 if (currentRow != null)
                 {
                     currentRow.Title = category.Title;
@@ -121,7 +129,7 @@ namespace Budgets.Repositories
             return category;
         }
 
-        public void DeleteRow(int id)
+        public void DeleteCategory(int id)
         {
             var row = _context.Categories.FirstOrDefault(r => r.Id == id);
 
@@ -133,7 +141,7 @@ namespace Budgets.Repositories
             _context.SaveChanges();
         }
 
-        public IQueryable<Post> GetRowPosts(int id)
+        public IQueryable<Post> GetCategoryPosts(int id)
         {
             return _context.Posts.Where(p => p.CategoryId == id);
         }
@@ -151,7 +159,7 @@ namespace Budgets.Repositories
 
                 if (currentPost != null)
                 {
-                    currentPost.Total = post.Total;
+                    currentPost.Amount = post.Amount;
                     currentPost.Title = post.Title;
                     currentPost.Notes = post.Notes;
                     currentPost.UpdateDate = DateTime.UtcNow;
