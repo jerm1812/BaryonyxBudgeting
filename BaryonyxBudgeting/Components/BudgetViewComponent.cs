@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Budgets;
 using Budgets.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,7 @@ namespace BaryonyxBudgeting.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var budgets = _repository.GetUserBudgets(user.Id);
+            var budgets = _repository.GetUserBudget(user.Id);
             return View("BudgetViewComponent", budgets);
         }
     }

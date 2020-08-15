@@ -20,38 +20,35 @@ namespace BaryonyxBudgeting.Controllers
     {
         private readonly IBudgetRepository _repository;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IConfiguration _configuration;
 
-        public BudgetController(IBudgetRepository repository, UserManager<IdentityUser> userManager,
-            IConfiguration configuration)
+        public BudgetController(IBudgetRepository repository, UserManager<IdentityUser> userManager)
         {
             _repository = repository;
             _userManager = userManager;
-            _configuration = configuration;
         }
 
-        [Route("/Budgets")]
+        [Route("/Budget")]
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Route("/BudgetList")]
+        [Route("/API/RetrieveBudget")]
         [HttpGet]
         public ViewComponentResult BudgetPartialView()
         {
             return ViewComponent("Budget");
         }
 
-        [Route("/CreateBudget")]
+        [Route("/API/GetCreateBudgetPartialView")]
         [HttpGet]
         public PartialViewResult CreateBudget()
         {
             return PartialView("CreateBudgetPartialView", new Budget());
         }
 
-        [Route("/DeleteBudget")]
+        [Route("/API/DeleteBudget")]
         [HttpPost]
         public async Task<JsonResult> DeleteBudget(string id)
         {
@@ -67,17 +64,7 @@ namespace BaryonyxBudgeting.Controllers
             }
         }
 
-        [HttpGet("CheckBudgetLimit")]
-        public async Task<IActionResult> CheckBudgetLimit()
-        {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            var budgets = _repository.GetUserBudgets(user.Id);
-
-            return budgets.Count() < _configuration.GetValue<int>("BudgetLimit")
-                ? Ok("can create budget")
-                : Problem("budget limit reached");
-        }
-
+        [Route("/API/UpdateBudget")]
         [HttpPost]
         public async Task<JsonResult> UpdateBudget(Budget model)
         {
@@ -94,22 +81,25 @@ namespace BaryonyxBudgeting.Controllers
             }
         }
 
-        [Route("Test")]
+        [Route("/API/PostToBudget")]
         [HttpGet]
-        public async Task<IActionResult> Test()
+        public PartialViewResult PostToBudget()
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            ViewBag.userName = user.UserName;
-            return View("NewIndex");
+            return PartialView();
         }
-        
-        [Route("NewTest")]
-        [HttpGet]
-        public async Task<IActionResult> NewTest()
+
+        [Route("/API/PostToBudget")]
+        [HttpPost]
+        public async Task<IActionResult> PostToBudget(Post model)
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            ViewBag.userName = user.UserName;
-            return View("NewTest");
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                var post = _repository.UpdatePost(model);
+                return Json(post);
+            }
+
+            return Json(model);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Budgets
             var post = modelBuilder.Entity<Post>();
             post.Property(m => m.PostedDate).HasColumnType("smalldatetime");
             post.Property(m => m.UpdateDate).HasColumnType("smalldatetime");
-            post.Property(m => m.Total).HasColumnType("decimal(11,2)");
+            post.Property(m => m.Amount).HasColumnType("decimal(11,2)");
             
             base.OnModelCreating(modelBuilder);
         }

@@ -17,7 +17,7 @@ namespace Budgets.Models
         [MinLength(2), MaxLength(50)]
         public string Title { get; set; }
         
-        [Display(Name = "Budget Total")]
+        [Display(Name = "Estimated Monthly Income")]
         public decimal Total { get; set; }
 
         [Range(typeof(DateTime), "1/1/1900", "6/6/2079")]

@@ -1,61 +1,69 @@
 ﻿@model Budgets.Models.Budget
 
-<section id="create_budget_section" class="item mx-auto mt-3 p-3 px-3" style="width: 40%;">
-    <header class="row">
-        <div class="col">
-            <h2 class="">Create A New Budget</h2>
-        </div>
-    </header>
-    <div id="form_container" data-url="@Url.Action("UpdateBudget", "Budget")" class="row m-auto">
-        @using (Html.BeginForm("UpdateBudget", "Budget", FormMethod.Post, new {id = "create_budget_form", @class = "w-100"}))
-        {
-            <div class="row m-auto">
-                <div class="form-group col-6">
-                    @Html.LabelFor(m => m.Title)
-                    @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
-                    @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id = "budget_title_input"})
+<div id="create_budget_section" class="row">
+    <div class="col-lg-6 col-md-9 col-sm-12 offset-3">
+        <section class="card mb-4">
+            <div class="card-top-small text-center">
+                <div class="card-icon text-center">
+                    <i class="fas fa-plus fa-3x"></i>
                 </div>
+                <h3>Create Budget</h3>
+            </div>
+            <div class="card-body">
+                <div id="form_container" data-url="@Url.Action("UpdateBudget", "Budget")" class="row m-auto">
+                    @using (Html.BeginForm("UpdateBudget", "Budget", FormMethod.Post, new {id = "create_budget_form", @class = "w-100"}))
+                    {
+                             <div class="row m-auto">
+                                 <div class="form-group col-6">
+                                     @Html.LabelFor(m => m.Title)
+                                     @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
+                                     @Html.TextBoxFor(m => m.Title, new {@class = "form-control", id = "budget_title_input"})
+                                 </div>
 
-                <div class="form-group col-6">
-                    @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"})
-                    @Html.LabelFor(m => m.Total)
-                    @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id = "budget_total_input"})
+                                 <div class="form-group col-6">
+                                     @Html.ValidationMessageFor(m => m.Total, "", new {@class = "text-danger"})
+                                     @Html.LabelFor(m => m.Total)
+                                     @Html.TextBoxFor(m => m.Total, new {@class = "form-control", id = "budget_total_input"})
+                                 </div>
+                             </div>
+
+                        <div id="category_section">
+                            <h3>Categories</h3>
+                            <div class="row m-auto category category-0">
+                                <div class="form-group title col-3">
+                                    <span class="field-validation-valid text-danger text-small" data-valmsg-for="category-title-name-0" data-valmsg-replace="true"></span>
+                                    <label for="category-title-0">Title</label>
+                                    <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"/>
+                                </div>
+                                <div class="form-group total col-3">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="category-total-name-0" data-valmsg-replace="true"></span>
+                                    <label for="category-total-0">Total</label>
+                                    <input id="category-total-0" name="category-total-name-0" type="number" class="form-control" data-val-number="Must be a number" data-val-required="*" data-val="true" value="">
+                                </div>
+                                <div class="form-group type col-3">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="category-type-name-0" data-val></span>
+                                    <label for="category-type-0">Type</label>
+                                    <select id="category-type-0" name="category-type-name-0" class="form-control" data-val="true" data-val-required="*">
+                                        <option value="0">Set Amount</option>
+                                        <option value="1">Percent</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr/>
+
+                        <div class="float-left">
+                            <buttton id="add_category" type="button" class="btn btn-dark">Add Category</buttton>
+                        </div>
+
+                        <div class="float-right">
+                            <button id="cancel_btn" type="button" class="btn btn-danger">Cancel</button>
+                            <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
+                        </div>
+                    }
                 </div>
             </div>
-
-            <div id="category_section">
-                <h3>Categories</h3>
-                <div class="row m-auto category category-0">
-                    <div class="form-group title col-3">
-                        <span class="field-validation-valid text-danger text-small" data-valmsg-for="category-title-name-0" data-valmsg-replace="true"></span>
-                        <label for="category-title-0">Title</label>
-                        <input id="category-title-0" name="category-title-name-0" type="text" class="form-control" data-val-minlength-min="2" maxlength="50" data-val="true" data-val-maxlength="Max length: 50" data-val-maxlength-max="50" data-val-minlength="Min length: 2" data-val-required="*"/>
-                    </div>
-                    <div class="form-group total col-3">
-                        <span class="field-validation-valid text-danger" data-valmsg-for="category-total-name-0" data-valmsg-replace="true"></span>
-                        <label for="category-total-0">Total</label>
-                        <input id="category-total-0" name="category-total-name-0" type="number" class="form-control" data-val-number="Must be a number" data-val-required="*" data-val="true" value="">
-                    </div>
-                    <div class="form-group type col-3">
-                        <span class="field-validation-valid text-danger" data-valmsg-for="category-type-name-0" data-val></span>
-                        <label for="category-type-0">Type</label>
-                        <select id="category-type-0" name="category-type-name-0" class="form-control" data-val="true" data-val-required="*">
-                            <option value="0">Amount</option>
-                            <option value="1">Percent</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ml-3 float-left">
-                <buttton id="add_category" type="button" class="btn btn-default">Add Category</buttton>
-            </div>
-
-            <div class="float-right">
-                <button id="cancel_btn" type="button" class="btn btn-danger">Cancel</button>
-                <input type="submit" id="createBudget" class="btn btn-primary" value="Create Budget"/>
-            </div>
-        }
+        </section>
     </div>
-    <script src="js/create-budget.js"></script>
-</section>
+</div>

@@ -1,6 +1,54 @@
 ﻿@{
+    ViewBag.Title = "Baryonyx Budgeting";
     Layout = "_BudgetLayout";
-    ViewBag.Title = "Profile";
 }
 
-@await Component.InvokeAsync("Budget")
+<div class="container-fluid">
+    <h1 class="mt-2">Dashboard</h1>
+
+    <ol class="breadcrumb mb-5">
+        <li class="breadcrumb-item active">Activity</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-6">
+            <section class="card mb-4">
+                <div class="card-top">
+                    <div class="card-icon text-center">
+                        <i class="fa fa-chart-bar fa-3x"></i>
+                    </div>
+                    <h4>This Month</h4>
+                </div>
+                <div id="test2" class="card-body">
+
+                </div>
+            </section>
+        </div>
+
+        <div class="col-6">
+            <section class="card mb-4">
+                <div class="card-top">
+                    <div class="card-icon text-center">
+                        <i class="fa fa-chart-bar fa-3x"></i>
+                    </div>
+                    <h4>Last Month</h4>
+                </div>
+                <div id="test2" class="card-body">
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <ol class="breadcrumb mb-5">
+        <li class="breadcrumb-item active">Your Budgets</li>
+    </ol>
+    
+    @{ await Html.RenderPartialAsync("PostToBudget"); }
+
+    @await Component.InvokeAsync("Budget")
+    
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Budgets Shared With You</li>
+    </ol>
+</div>
