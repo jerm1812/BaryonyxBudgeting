@@ -2026,6 +2026,7 @@
               <e p="dist" t="Include">
                 <e p="toastr.css" t="Include" />
                 <e p="toastr.js.map" t="Include" />
+                <e p="toastr.min.css" t="Include" />
                 <e p="toastr.min.js" t="Include" />
               </e>
             </e>
