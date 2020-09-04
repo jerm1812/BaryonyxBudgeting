@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace BaryonyxBudgeting.Extensions
+namespace Budgets.Extensions
 {
     public class CurrencyFormatter : IFormatProvider, ICustomFormatter
     {
@@ -55,7 +55,7 @@ namespace BaryonyxBudgeting.Extensions
 
             var number = Convert.ToDecimal(result);
             
-            return number > 9999 ? $"{number/1000:C}K" : number.ToString();
+            return number > 9999 ? $"{number/1000:C}K" : $"{number:C}";
         }
 
         private string RemoveTrailingZero(string number)

@@ -23,7 +23,8 @@
         e.preventDefault();
         PostToBudget($(this));
     });
-    page.on("click", ".category-row", ShowCategoryDetails);
+    page.on("click", ".details-btn", ShowCategoryDetails);
+    page.on("click", ".edit-btn", EditPost);
     $('#personal_budget_table2').DataTable();
 });
 // END PAGE LOAD //
@@ -159,7 +160,7 @@ function PostToBudget(data) {
 }
 
 function ShowCategoryDetails() {
-    console.log($(this).attr("id"))
+    $('#' + $(this).attr("id").replace("details", "post-details")).slideToggle();
 }
 
 function ShowProfile() {
@@ -171,4 +172,8 @@ function ShowProfile() {
            $('#page_body').replaceWith(response);
        }
     });
+}
+
+function EditPost() {
+    
 }

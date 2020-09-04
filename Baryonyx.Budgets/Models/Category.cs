@@ -26,6 +26,6 @@ namespace Budgets.Models
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public DateTime UpdateDate { get; set; }  = DateTime.UtcNow;
         
-        public IQueryable<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }

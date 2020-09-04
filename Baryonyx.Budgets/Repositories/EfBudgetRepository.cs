@@ -29,7 +29,7 @@ namespace Budgets.Repositories
 
             foreach (var category in budget.Categories)
             {
-                category.Posts = _context.Posts.Where(p => p.CategoryId == category.Id);
+                category.Posts = _context.Posts.Where(p => p.CategoryId == category.Id).ToList();
             }
 
             return budget;
