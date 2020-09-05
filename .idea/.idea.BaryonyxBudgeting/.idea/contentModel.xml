@@ -108,6 +108,7 @@
           <e p="AccountController.cs" t="Include" />
           <e p="BudgetController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="MessageController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="extensions" t="Include">
@@ -167,6 +168,9 @@
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Message" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_BudgetLayout.cshtml" t="Include" />

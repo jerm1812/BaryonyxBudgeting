@@ -6,5 +6,6 @@
         public int SenderId { get; set; }
         public int ReceiverId { get; set; }
         public string MessageBody { get; set; }
+        public bool IsRead { get; set; }
     }
 }
